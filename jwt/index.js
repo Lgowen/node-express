@@ -18,7 +18,9 @@ const createToken = function (content) {
     */ 
 const validateToken = function (req, res, next) {
  // 获取请求头中的Authorization认证字符
- const authorization = req.get('Authorization');
+ console.log(req)
+ const authorization = req.get('Authorization')
+ console.log(authorization)
  // 排除不需要授权的路由
  if(req.path === '/api/comment') {
     jwt.verify(authorization, SERECT, function (err, decode) {

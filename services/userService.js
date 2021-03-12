@@ -7,7 +7,7 @@ const { createToken } = require("../jwt")
 // 返回：新注册的用户对象
 exports.reg = async function (userObj) {
   userObj.loginPwd = createMD5Password(userObj.loginPwd)
-  console.log(userObj)
+  // console.log(userObj)
   const result = await User.create(userObj);
   return result;
 };

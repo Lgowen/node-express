@@ -4,14 +4,14 @@ const services = require("../services");
 const router = express.Router();
 
 router.post("/login", async function (req, res) {
-  console.log(req)
+  // console.log(req)
   const result = await services.userService.login(
     req.body.loginId,
     req.body.loginPwd
   );
   if (result) {
     // 登录成功
-    console.log(result)
+    // console.log(result)
     // res.cookie("token", result._id, {
     //   // cookie的其他信息
     //   path: "/", // 默认值为 /

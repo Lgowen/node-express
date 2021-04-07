@@ -52,4 +52,16 @@ router.get("/whoami", function (req, res) {
   }
 });
 
+router.post("/update", async function (req, res) {
+  try {
+    const result = await services.userService.updateUser(req.body.loginId, req.body.loginPwd)
+    console.log(result)
+    res.send(result)
+  } catch (err) {
+    res.send({
+      err: err.message,
+    });
+  }
+})
+
 module.exports = router; // 导出路由中间件

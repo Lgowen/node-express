@@ -34,6 +34,7 @@ app.use(express.json());
 app.use("/api/user", require("./routes/user"))
 app.use("/api/news", require("./routes/news"))
 app.use("/api/articles", require("./routes/articles"))
+app.use("/api/comment", require("./routes/comment"))
 
 app.listen(9527, function () {
   // 监听端口

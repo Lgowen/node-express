@@ -37,3 +37,16 @@ exports.getUser = async function (id) {
   const u = await User.findById(id);
   return u;
 };
+
+
+exports.updateUser = async function (loginId, loginPwd) {
+  const res = await User.updateOne(
+    {
+      loginId
+    },
+    {
+      loginPwd: createMD5Password(loginPwd)
+    }
+  )
+  return res
+}

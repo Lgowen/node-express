@@ -17,7 +17,13 @@ router.get("/", async function (req, res) {
 //   const result = await services.newsService.getNews(page, limit, "");
   const filePaths = readFolder('markdown') // 读取markdown文件夹获取文件路径
   const contents = await generateContents(filePaths)
-  console.log(contents)
+  // console.log(contents)
+  contents.forEach(item => {
+    const start = item.indexOf('<h1>')
+    const end = item.indexOf('</h1>')
+    const str = item.substring(start, end)
+    console.log(str)
+  })
   res.send(contents)
 });
 

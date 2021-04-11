@@ -16,10 +16,14 @@ app.all('*', function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
   res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild')
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
-  
+  console.log(req.method)
   res.header("X-Powered-By", ' 3.2.1')
   res.header("Content-Type", "application/json;charset=utf-8")
-  next()
+  if (req.method === 'OPTIONS') {
+    res.send(200)
+  } else {
+    next()
+  }
 })
 
 // 搭建一个静态资源服务器
@@ -35,6 +39,7 @@ app.use("/api/user", require("./routes/user"))
 app.use("/api/news", require("./routes/news"))
 app.use("/api/articles", require("./routes/articles"))
 app.use("/api/comment", require("./routes/comment"))
+app.use("/api/img", require("./routes/img"))
 
 app.listen(9527, function () {
   // 监听端口
